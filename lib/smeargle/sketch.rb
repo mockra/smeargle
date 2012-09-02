@@ -1,5 +1,5 @@
-require 'net/http'
-require 'uri'
+require 'open-uri'
+require 'nokogiri'
 require "smeargle/image"
 
 module Smeargle
@@ -22,6 +22,10 @@ module Smeargle
         @safe_url ||= 'http://' + self.url
       end
       @safe_url ||= self.url
+    end
+
+    def response_body
+      @response_body ||= Nokogiri::HTML(open self.safe_url)
     end
 
   end
