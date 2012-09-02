@@ -1,5 +1,5 @@
 require "smeargle/version"
+require "smeargle/sketch"
 
 module Smeargle
-  # Your code goes here...
 end

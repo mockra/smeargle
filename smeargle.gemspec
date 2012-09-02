@@ -4,8 +4,10 @@ require File.expand_path('../lib/smeargle/version', __FILE__)
 Gem::Specification.new do |gem|
   gem.authors       = ["David Ratajczak"]
   gem.email         = ["david@mockra.com"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
+  gem.description   = %q{Smeargle is a tool for collecting a set of images from a url.}
+  gem.summary       = %q{The smeargle library is designed to return an object with 
+                         various methods to help you traverse the collection of images 
+                         returned by a url.}
   gem.homepage      = ""
 
   gem.files         = `git ls-files`.split($\)
@@ -14,4 +16,8 @@ Gem::Specification.new do |gem|
   gem.name          = "smeargle"
   gem.require_paths = ["lib"]
   gem.version       = Smeargle::VERSION
+
+  gem.add_development_dependency 'rake'
+  gem.add_development_dependency 'rspec'
+  gem.add_dependency 'nokogiri'
 end
