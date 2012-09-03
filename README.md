@@ -8,7 +8,7 @@ This library does provide some basic logic for helping you find
 a suitable image from any given url. Smeargle uses rmagick for
 filtering images based on size.
 
-(http://www.toplessrobot.com/smeargle.gif)
+[Smeargle](http://www.toplessrobot.com/smeargle.gif)
 
 ## Installation
 
