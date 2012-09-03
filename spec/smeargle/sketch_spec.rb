@@ -6,7 +6,7 @@ describe Smeargle::Sketch do
 
   before do
     FakeWeb.register_uri :get, 'http://google.com',
-      :body => "Google <img src='test.png' />"
+      body: "Google <img src='test.png' />"
   end
 
   describe 'new' do

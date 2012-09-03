@@ -8,7 +8,7 @@ Gem::Specification.new do |gem|
   gem.summary       = %q{The smeargle library is designed to return an object with 
                          various methods to help you traverse the collection of images 
                          returned by a url.}
-  gem.homepage      = ""
+  gem.homepage      = "http://mockra.com"
 
   gem.files         = `git ls-files`.split($\)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
@@ -21,4 +21,5 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency 'rspec'
   gem.add_dependency 'nokogiri'
   gem.add_dependency 'fakeweb'
+  gem.add_dependency 'rmagick'
 end

@@ -2,9 +2,11 @@
 
 Smeargle is an image collection tool that will return an object
 containing images from a given URL. Smeargle was designed to be
-a lightweight and simple solution for collecting images. This library
-does provide some basic logic for helping you find a suitable image from
-any given url.
+a lightweight and simple solution for collecting images.
+
+This library does provide some basic logic for helping you find
+a suitable image from any given url. Smeargle uses rmagick for
+filtering images based on size.
 
 ## Installation
 
@@ -26,18 +28,36 @@ Or install it yourself as:
 
 When initializing a smeargle object, you're able to provide a variety of
 options to help with image selection.
+
 ```
   # Initialize a collection with a minimum image width of 200
-  Smeargle::Sketch.new 'http://mockra.com', :min_width => 200
+  Smeargle::Sketch.new 'http://mockra.com', min_width: 200
 ```
 
 The available options are:
+
 ```
   Minimum images dimentions returned
   :min_width, :min_height
+```
 
-  Include open graph images
-  :open_graph
+### Images
+
+Images returned by your URL are included in the images array. Depending
+on the number of images included in the body, this could take some time
+to run. You may want to have it run in the background.
+
+```
+  s = Smeargle::Sketch.new 'google.com'
+
+  # returns an array filtered by provided options
+  s.images
+  
+  s.images.each do |img|
+    img[:url]
+    img[:width]
+    img[:height]
+  end
 ```
 
 ## Contributing
