@@ -17,15 +17,15 @@ module Smeargle
     end
 
     def safe_url
-      parsed_url = URI.parse self.url
+      parsed_url = URI.parse url
       if !parsed_url.scheme
-        @safe_url ||= 'http://' + self.url
+        @safe_url ||= 'http://' + url
       end
-      @safe_url ||= self.url
+      @safe_url ||= url
     end
 
     def response_body
-      @response_body ||= Nokogiri::HTML(open self.safe_url)
+      @response_body ||= Nokogiri::HTML(open safe_url)
     end
 
   end

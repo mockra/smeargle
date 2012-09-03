@@ -2,9 +2,11 @@ require 'spec_helper'
 
 describe Smeargle::Sketch do
 
+  let(:smeargle) { Smeargle::Sketch.new 'google.com' }
+
   before do
     FakeWeb.register_uri :get, 'http://google.com',
-      :body => "Google"
+      :body => "Google <img src='test.png' />"
   end
 
   describe 'new' do
@@ -23,8 +25,7 @@ describe Smeargle::Sketch do
 
   describe 'safe_url' do
     it 'should format the url' do
-      s = Smeargle::Sketch.new 'google.com'
-      s.safe_url.should == 'http://google.com'
+      smeargle.safe_url.should == 'http://google.com'
     end
 
     it 'should leave the url alone' do
@@ -36,8 +37,8 @@ describe Smeargle::Sketch do
 
   describe 'response' do
     it 'should have the correct body' do
-      s = Smeargle::Sketch.new 'google.com'
-      s.response_body.css('body').text.should == 'Google'
+      smeargle.response_body.css('body').text.
+        should =~ /google/i
     end
   end
 
