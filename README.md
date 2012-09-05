@@ -1,5 +1,4 @@
-# Smeargle [![Build
-Status](https://secure.travis-ci.org/mockra/smeargle.png)](http://travis-ci.org/mockra/smeargle)
+# Smeargle [![BuildStatus](https://secure.travis-ci.org/mockra/smeargle.png)](http://travis-ci.org/mockra/smeargle)
 
 Smeargle is an image collection tool that will return an object
 containing images from a given URL. Smeargle was designed to be
