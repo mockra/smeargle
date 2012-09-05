@@ -1,5 +1,5 @@
 require "smeargle/version"
-require 'rmagick'
+require 'RMagick'
 require 'open-uri'
 require 'nokogiri'
 require "smeargle/image"
