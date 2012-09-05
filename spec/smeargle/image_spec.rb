@@ -9,7 +9,7 @@ describe Smeargle::Image do
       { url: 'test.png', height: 10, width: 10 })
 
     FakeWeb.register_uri :get, 'http://google.com',
-      body: "Google <img src='test.png' /> <img src='test.png' />"
+      body: "Google <img src='/test.png' /> <img src='/test.png' />"
   end
 
   describe 'images' do
@@ -38,6 +38,20 @@ describe Smeargle::Image do
     end
   end
 
+  describe 'formatted images' do
+    it 'should return an array of formatted urls' do
+      e = smeargle.formatted_images
+      e.first.should == 'http://google.com/test.png'
+    end
+  end
+
+  describe 'detailed_images' do
+    it 'should return an array of hashes' do
+      e = smeargle.detailed_images
+      e.first.should be_a Hash
+    end
+  end
+
   describe 'image_collection' do
     it 'should not contain duplicates' do
       smeargle.image_collection.count.should == 1
@@ -50,6 +64,13 @@ describe Smeargle::Image do
       s.stub!(:image_details).and_return(
         { url: 'test.png', height: 10, width: 10 })
       s.filtered_images.count.should == 0
+    end
+  end
+
+  describe 'simple_images' do
+    it 'should contain an array of urls' do
+      s = Smeargle::Sketch.new 'google.com'
+      s.simple_images.first.should =~ /test\.png/
     end
   end
 

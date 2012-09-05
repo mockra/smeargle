@@ -62,6 +62,18 @@ to run. You may want to have it run in the background.
   end
 ```
 
+If you're not looking to filter images, and don't need detailed information,
+then you can use simple_images. This method returns an array of image
+urls, and is faster than the images method.
+
+```
+  s = Smeargle::Sketch.new 'google.com'
+
+  s.simple_images.each do |img|
+    img  # returns 'http://google.com/test.jpg'
+  end
+```
+
 ## Contributing
 
 1. Fork it

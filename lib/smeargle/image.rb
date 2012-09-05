@@ -18,10 +18,17 @@ module Smeargle
     def formatted_images
       formatted_images = []
       image_collection.each do |img|
-        image = image_format img
-        formatted_images << image_details(image)
+        formatted_images << image_format(img)
       end
       formatted_images
+    end
+
+    def detailed_images
+      detailed_images = []
+      formatted_images.each do |img|
+        detailed_images << image_details(img)
+      end
+      detailed_images
     end
 
     def image_format img
@@ -39,10 +46,14 @@ module Smeargle
     end
 
     def filtered_images
-      images = formatted_images
+      images = detailed_images
       images.reject! { |x| x[:width] < min_width } if min_width
       images.reject! { |x| x[:height] < min_height } if min_height
       images
+    end
+
+    def simple_images
+      @simple_images ||= formatted_images
     end
 
   end
