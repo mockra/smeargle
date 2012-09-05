@@ -1,7 +1,3 @@
-require 'open-uri'
-require 'nokogiri'
-require "smeargle/image"
-
 module Smeargle
   class Sketch
 
