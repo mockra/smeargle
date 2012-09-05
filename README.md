@@ -81,3 +81,11 @@ urls, and is faster than the images method.
 3. Commit your changes (`git commit -am 'Added some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+
+## Contact
+
+[david@mockra.com](mailto:david@mockra.com)
+
+[@Mockra_](http://twitter.com/#!/mockra_)
+
+[mockra.com](http://mockra.com)
