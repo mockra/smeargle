@@ -16,7 +16,9 @@ module Smeargle
     def formatted_images
       formatted_images = []
       image_collection.each do |img|
-        formatted_images << image_format(img)
+        unless corrupt? img
+          formatted_images << image_format(img)
+        end
       end
       formatted_images
     end
@@ -56,6 +58,10 @@ module Smeargle
 
     def simple_images
       @simple_images ||= formatted_images
+    end
+
+    def corrupt? img
+      img =~ /\;/
     end
 
   end

@@ -74,4 +74,11 @@ describe Smeargle::Image do
     end
   end
 
+  describe 'corrupt?' do
+    it 'should return true for corrupt url' do
+      e = smeargle.corrupt? 'http:/google.com/test;test.png'
+      e.should be_true
+    end
+  end
+
 end
