@@ -42,4 +42,11 @@ describe Smeargle::Sketch do
     end
   end
 
+  describe 'clean_url' do
+    it 'should clean up paramaters' do
+      s = Smeargle::Sketch.new 'google.com/test/clean?go=now'
+      s.clean_url.should == 'http://google.com'
+    end
+  end
+
 end

@@ -31,7 +31,7 @@ module Smeargle
 
     def image_format img
       if URI(img).relative?
-        self.safe_url + img
+        self.clean_url + img
       else
         img
       end

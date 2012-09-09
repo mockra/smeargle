@@ -24,5 +24,11 @@ module Smeargle
       @response_body ||= Nokogiri::HTML(open safe_url)
     end
 
+    def clean_url
+      @clean_url ||=
+        URI(safe_url).scheme +
+        '://' + URI(safe_url).host
+    end
+
   end
 end
