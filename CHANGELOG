@@ -7,3 +7,7 @@
 
 ## v0.1.1
 * Fixed case on RMagick
+
+## v0.1.2
+* Added error handling to image_details
+* Added better image link support
