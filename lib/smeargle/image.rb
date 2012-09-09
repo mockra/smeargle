@@ -38,9 +38,13 @@ module Smeargle
     end
 
     def image_details img
-      remote_image = open img
-      image = Magick::Image::from_blob(remote_image.read).first
-      { url: img, height: image.columns, width: image.rows }
+      begin
+        remote_image = open img
+        image = Magick::Image::from_blob(remote_image.read).first
+        { url: img, height: image.columns, width: image.rows }
+      rescue
+        nil
+      end
     end
 
     def filtered_images
