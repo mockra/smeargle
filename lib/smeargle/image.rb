@@ -14,24 +14,17 @@ module Smeargle
     end
 
     def formatted_images
-      formatted_images = []
-      image_collection.each do |img|
-        unless corrupt? img
-          formatted_images << image_format(img)
-        end
-      end
-      formatted_images
+      formatted_images ||=
+        image_collection.reject{ |i| corrupt? i }.
+          map { |i| format_image_url i }
     end
 
     def detailed_images
-      detailed_images = []
-      formatted_images.each do |img|
-        detailed_images << image_details(img)
-      end
-      detailed_images
+      detailed_images ||=
+        formatted_images.map { |i| image_details i }
     end
 
-    def image_format img
+    def format_image_url img
       if URI(img).relative?
         self.clean_url + img
       else

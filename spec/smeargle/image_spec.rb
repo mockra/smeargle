@@ -9,7 +9,8 @@ describe Smeargle::Image do
       { url: 'test.png', height: 10, width: 10 })
 
     FakeWeb.register_uri :get, 'http://google.com',
-      body: "Google <img src='/test.png' /> <img src='/test.png' />"
+      body: "Google <img src='/test.png' /> <img src='/test.png' />
+      <img src='/test.png;script' />"
   end
 
   describe 'images' do
@@ -26,14 +27,14 @@ describe Smeargle::Image do
     end
   end
 
-  describe 'image_format' do
+  describe 'format_image_url' do
     it 'should format relative paths' do
-      e = smeargle.image_format '/test.png'
+      e = smeargle.format_image_url '/test.png'
       e.should == 'http://google.com/test.png'
     end
 
     it 'should not format absolute paths' do
-      e = smeargle.image_format 'http://google.com/test.png'
+      e = smeargle.format_image_url 'http://google.com/test.png'
       e.should == 'http://google.com/test.png'
     end
   end
@@ -42,6 +43,11 @@ describe Smeargle::Image do
     it 'should return an array of formatted urls' do
       e = smeargle.formatted_images
       e.first.should == 'http://google.com/test.png'
+    end
+
+    it 'should exclude corrupted images' do
+      e = smeargle.formatted_images
+      e.count.should == 1
     end
   end
 
@@ -54,7 +60,7 @@ describe Smeargle::Image do
 
   describe 'image_collection' do
     it 'should not contain duplicates' do
-      smeargle.image_collection.count.should == 1
+      smeargle.image_collection.count.should == 2
     end
   end
 
