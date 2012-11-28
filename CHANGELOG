@@ -11,3 +11,7 @@
 ## v0.1.2
 * Added error handling to image_details
 * Added better image link support
+
+## v1.0.0
+* Added a license to gemspec
+* Stable release

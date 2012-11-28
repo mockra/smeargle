@@ -54,7 +54,7 @@ to run. You may want to have it run in the background.
 
   # returns an array filtered by provided options
   s.images
-  
+
   s.images.each do |img|
     img[:url]
     img[:width]
