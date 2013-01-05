@@ -13,12 +13,8 @@ module Smeargle
     end
 
     def safe_url
-      parsed_url = URI.parse url
-      if !parsed_url.scheme
-        @safe_url ||= 'http://' + url
-      else
-        @safe_url ||= url
-      end
+      @safe_url ||=
+        !URI.parse(url).scheme ? "http://#{url}" : url
     end
 
     def response_body

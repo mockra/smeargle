@@ -15,3 +15,6 @@
 ## v1.0.0
 * Added a license to gemspec
 * Stable release
+
+## v1.0.1
+* Cleaned up code

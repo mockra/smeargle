@@ -10,12 +10,12 @@ describe Smeargle::Sketch do
   end
 
   describe 'new' do
-    it 'should initialize url' do
+    it 'initializes url' do
       s = Smeargle::Sketch.new 'http://google.com'
       s.url.should == 'http://google.com'
     end
 
-    it 'should set min width/height' do
+    it 'sets min width/height' do
       s = Smeargle::Sketch.new 'http://google.com',
         min_width: 200, min_height: 250
       s.min_width.should == 200
@@ -24,11 +24,11 @@ describe Smeargle::Sketch do
   end
 
   describe 'safe_url' do
-    it 'should format the url' do
+    it 'formats the url' do
       smeargle.safe_url.should == 'http://google.com'
     end
 
-    it 'should leave the url alone' do
+    it 'does not format safe urls' do
       s = Smeargle::Sketch.new 'http://google.com'
       s.safe_url.should == 'http://google.com'
       s.safe_url.should == s.url
@@ -36,14 +36,14 @@ describe Smeargle::Sketch do
   end
 
   describe 'response' do
-    it 'should have the correct body' do
+    it 'generates the correct body' do
       smeargle.response_body.css('body').text.
         should =~ /google/i
     end
   end
 
   describe 'clean_url' do
-    it 'should clean up paramaters' do
+    it 'cleans up paramaters' do
       s = Smeargle::Sketch.new 'google.com/test/clean?go=now'
       s.clean_url.should == 'http://google.com'
     end
